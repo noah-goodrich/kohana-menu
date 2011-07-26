@@ -17,7 +17,7 @@ class Kohana_Menu
 	 */
 	public function __construct($config)
 	{
-		$this->config = Kohana::config($config);
+		$this->config = Kohana::$config->load($config);
 		$this->view = View::factory($this->config['view']);
 
                 if ($this->config['driver'] == 'database') {
