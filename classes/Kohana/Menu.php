@@ -47,9 +47,9 @@ class Kohana_Menu {
 	public static function factory($config = 'bootstrap')
 	{
 		if (Kohana::find_file('config/menu', $config) === FALSE) {
-			throw new Kohana_Exception('Menu configuration file ":path" not found!', [':path'=> APPPATH.'config/menu/'.$config
+			throw new Kohana_Exception('Menu configuration file ":path" not found!', array(':path'=> APPPATH.'config/menu/'.$config
 				.EXT
-			]);
+			));
 		}
 		return new Menu('menu/'.$config);
 	}

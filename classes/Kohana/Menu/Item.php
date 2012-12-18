@@ -12,14 +12,14 @@ class Kohana_Menu_Item {
 	 * @var array Current item config
 	 * @since 2.0
 	 */
-	private $_config = [
+	private $_config = array(
 		'link'     => NULL, // Relative or absolute target for this menu item (href)
 		'title'    => NULL, // Visible text
 		'icon'     => NULL, // Icon class for this menu item
 		'tooltip'  => NULL, // Tooltip text for this menu item
-		'classes'  => [], // Extra classes for this menu item
-		'siblings' => [] // Sub-links
-	];
+		'classes'  => array(), // Extra classes for this menu item
+		'siblings' => array() // Sub-links
+	);
 
 	private $_menu;
 
@@ -36,7 +36,7 @@ class Kohana_Menu_Item {
 		$this->_config['title'] .= array_key_exists('title', $item_config) ? $item_config['title'] : NULL;
 		$this->_config['tooltip'] = array_key_exists('tooltip', $item_config) ? $item_config['tooltip'] : NULL;
 		$this->_config['url'] = array_key_exists('url', $item_config) ? $item_config['url'] : '#';
-		$this->_config['classes'] = array_key_exists('classes', $item_config) ? $item_config['classes'] : [];
+		$this->_config['classes'] = array_key_exists('classes', $item_config) ? $item_config['classes'] : array();
 
 		// Apply URL::site
 		if (! 'http://' == substr($this->_config['url'], 0, 7)    AND ! 'https://' == substr($this->_config['url'], 0, 8)) {
@@ -56,9 +56,9 @@ class Kohana_Menu_Item {
 	 */
 	public function __toString()
 	{
-		return HTML::anchor($this->_config['url'], $this->_config['title'], [
+		return HTML::anchor($this->_config['url'], $this->_config['title'], array(
 			'title'=> $this->_config['tooltip']
-		], NULL, FALSE);
+		), NULL, FALSE);
 	}
 
 	/**
